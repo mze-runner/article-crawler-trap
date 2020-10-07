@@ -7,7 +7,6 @@ services:
         restart: unless-stopped
         volumes:
             # bundle with application / static assets /
-            - ~/offgame/ofg-client-www/wwww:/var/www/localhost
             # - PATH_TO_STATIC_ASSETS:/var/www/localhost
             # server config files
             - ./nginx/conf.d:/etc/nginx/conf.d
