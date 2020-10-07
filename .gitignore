@@ -1,3 +1,6 @@
+# NGINX log
+nginx/logs
+
 # VS code workspace 
 .vscode
 

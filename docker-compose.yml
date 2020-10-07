@@ -1,0 +1,26 @@
+version: '3.7'
+
+services:
+    nginx:
+        image: nginx
+        container_name: nginx-local
+        restart: unless-stopped
+        volumes:
+            # bundle with application / static assets /
+            - ~/offgame/ofg-client-www/wwww:/var/www/localhost
+            # - PATH_TO_STATIC_ASSETS:/var/www/localhost
+            # server config files
+            - ./nginx/conf.d:/etc/nginx/conf.d
+            - ./nginx/nginxconfig.io:/etc/nginx/nginxconfig.io
+            # logs
+            - ./nginx/logs:/var/log/nginx
+        ports:
+            - '80:80'
+        command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+    shdw:
+        build: .
+        container_name: shdw
+        restart: unless-stopped
+        environment:
+            - PORT=7500
+        command: 'npm start'
