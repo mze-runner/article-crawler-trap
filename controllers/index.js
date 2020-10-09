@@ -42,7 +42,7 @@ const generatePostHTML = (req, res, next) => {
         }
         // Step 3. Generate HTML file out of template my means of ejs.
         const html = ejs.render(ejsBodyTemplate, post);
-        // Step 4. Sent response beck to requestor
+        // Step 4. Sent response back to requestor
         res.send(html);
     } catch (err) {
         next(err);
